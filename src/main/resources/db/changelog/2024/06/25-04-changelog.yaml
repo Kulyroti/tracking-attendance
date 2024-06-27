@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1719339136036-21
+      author: ??????
+      changes:
+        - addColumn:
+            tableName: lessons
+            columns:
+              - column:
+                  name: lesson_type_id
+                  type: BIGINT
+                  constraints:
+                    foreignKeyName: FK_lesson_lesson_type
+                    referencedTableName: lessons_types
+                    referencedColumnNames: id

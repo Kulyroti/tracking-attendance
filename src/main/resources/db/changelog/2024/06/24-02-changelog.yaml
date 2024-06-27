@@ -1,0 +1,276 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1719257044809-1
+      author: ??????
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: attendance_seq
+            startValue: 1
+  - changeSet:
+      id: 1719257044809-2
+      author: ??????
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: discipline_seq
+            startValue: 1
+  - changeSet:
+      id: 1719257044809-3
+      author: ??????
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: group_seq
+            startValue: 1
+  - changeSet:
+      id: 1719257044809-4
+      author: ??????
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: lesson_seq
+            startValue: 1
+  - changeSet:
+      id: 1719257044809-5
+      author: ??????
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: student_seq
+            startValue: 1
+  - changeSet:
+      id: 1719257044809-6
+      author: ??????
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: teacher_seq
+            startValue: 1
+  - changeSet:
+      id: 1719257044809-7
+      author: ??????
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_attendances
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: lesson_id
+                  type: BIGINT
+              - column:
+                  name: student_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: present
+                  type: BOOLEAN
+            tableName: attendances
+  - changeSet:
+      id: 1719257044809-8
+      author: ??????
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_disciplines
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+            tableName: disciplines
+  - changeSet:
+      id: 1719257044809-9
+      author: ??????
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_groups
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: year
+                  type: INT
+            tableName: groups
+  - changeSet:
+      id: 1719257044809-10
+      author: ??????
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_lessons
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: discipline_id
+                  type: BIGINT
+              - column:
+                  name: teacher_id
+                  type: BIGINT
+              - column:
+                  name: group_id
+                  type: BIGINT
+              - column:
+                  name: date
+                  type: DATE
+              - column:
+                  name: classroom
+                  type: VARCHAR(255)
+            tableName: lessons
+  - changeSet:
+      id: 1719257044809-11
+      author: ??????
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_students
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: first_name
+                  type: VARCHAR(255)
+              - column:
+                  name: middle_name
+                  type: VARCHAR(255)
+              - column:
+                  name: last_name_student
+                  type: VARCHAR(255)
+              - column:
+                  name: email
+                  type: VARCHAR(255)
+              - column:
+                  name: group_id
+                  type: BIGINT
+            tableName: students
+  - changeSet:
+      id: 1719257044809-12
+      author: ??????
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_teachers
+                  name: id_teacher
+                  type: BIGINT
+              - column:
+                  name: first_name
+                  type: VARCHAR(255)
+              - column:
+                  name: middle_name
+                  type: VARCHAR(255)
+              - column:
+                  name: last_name
+                  type: VARCHAR(255)
+              - column:
+                  name: email
+                  type: VARCHAR(255)
+            tableName: teachers
+  - changeSet:
+      id: 1719257044809-13
+      author: ??????
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: lesson_id
+            baseTableName: attendances
+            constraintName: FK_ATTENDANCES_ON_LESSON
+            referencedColumnNames: id
+            referencedTableName: lessons
+  - changeSet:
+      id: 1719257044809-14
+      author: ??????
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: student_id
+            baseTableName: attendances
+            constraintName: FK_ATTENDANCES_ON_STUDENT
+            referencedColumnNames: id
+            referencedTableName: students
+  - changeSet:
+      id: 1719257044809-15
+      author: ??????
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: discipline_id
+            baseTableName: lessons
+            constraintName: FK_LESSONS_ON_DISCIPLINE
+            referencedColumnNames: id
+            referencedTableName: disciplines
+  - changeSet:
+      id: 1719257044809-16
+      author: ??????
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: group_id
+            baseTableName: lessons
+            constraintName: FK_LESSONS_ON_GROUP
+            referencedColumnNames: id
+            referencedTableName: groups
+  - changeSet:
+      id: 1719257044809-17
+      author: ??????
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: teacher_id
+            baseTableName: lessons
+            constraintName: FK_LESSONS_ON_TEACHER
+            referencedColumnNames: id_teacher
+            referencedTableName: teachers
+  - changeSet:
+      id: 1719257044809-18
+      author: ??????
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: group_id
+            baseTableName: students
+            constraintName: FK_STUDENTS_ON_GROUP
+            referencedColumnNames: id
+            referencedTableName: groups
+

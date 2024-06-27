@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1719339136036-22
+      author: ??????
+      changes:
+        - addColumn:
+            tableName: lessons
+            columns:
+              - column:
+                  name: time
+                  type: TIME

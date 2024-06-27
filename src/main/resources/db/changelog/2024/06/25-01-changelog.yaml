@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1719257044809-19
+      author: ??????
+      changes:
+        - renameColumn:
+            tableName: students
+            oldColumnName: last_name_student
+            newColumnName: last_name
+            columnDataType: VARCHAR(255)
